@@ -1,0 +1,19 @@
+#!groovy
+// First JenkinsFile
+
+properties([disableConcurrentBuilds()])
+
+pipiline {
+    agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage ("First step") {
+            steps {
+               sh 'hostname' 
+            }
+        }
+    }
+}
